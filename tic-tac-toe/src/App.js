@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import "./App.css";
 import Choices from "./components/Choices";
+import Footer from "./components/Footer";
 import Square from "./components/Square";
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
   const [message, setMessage] = useState("");
   // displays messages for player instructions
   const [playerMessage, setPlayerMessage] = useState(
-    <Typography variant="h4">Player One, Select your Marker</Typography>
+    "Player 1, Select your Marker"
   );
   // Markers choices "X's and O's"
   const [marker, setMarker] = useState([
@@ -45,9 +46,7 @@ const App = () => {
     setPlayerOneTurn(true);
     setPlayGame(true);
     setMessage("");
-    setPlayerMessage(
-      <Typography variant="h4">Player One, Select your Marker</Typography>
-    );
+    setPlayerMessage("Player 1, Select your Marker");
     setPlayerOneMarker("");
     setPlayerTwoMarker("");
     setMarker(["😎", "🥸", "🤯", "😱", "😈", "💩", "👻", "🎃", "👽"]);
@@ -59,15 +58,13 @@ const App = () => {
     if (playerOneTurn) {
       setPlayerOneMarker(marker[index]);
       setPlayerOneTurn(false);
-      setPlayerMessage(
-        <Typography variant="h4">Player Two, Select your Marker</Typography>
-      );
+      setPlayerMessage("Player 2, Select your Marker");
     } else {
       setPlayerTwoMarker(marker[index]);
       setPlayerOneTurn(true);
       // after player 2 selects marker...
       // change message to show it's player 1's turn to play
-      setPlayerMessage(<Typography variant="h4">Player One's Turn</Typography>);
+      setPlayerMessage("Player 1's Turn");
 
       // once player 1 and player 2 select their marker..make Markers
       //  (Emojis) go away
@@ -83,15 +80,11 @@ const App = () => {
       if (playerOneTurn) {
         updateSquare[index] = playerOneMarker;
         setPlayerOneTurn(false);
-        setPlayerMessage(
-          <Typography variant="h4">Player Two's Turn</Typography>
-        );
+        setPlayerMessage("Player 2's Turn");
       } else {
         updateSquare[index] = playerTwoMarker;
         setPlayerOneTurn(true);
-        setPlayerMessage(
-          <Typography variant="h4">Player One's Turn</Typography>
-        );
+        setPlayerMessage("Player 1's Turn");
       }
 
       setSquares(updateSquare);
@@ -162,8 +155,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <Typography variant="h2">Tic Tac Toe</Typography>
-      {playerMessage}
+      <Typography
+        variant="h2"
+        sx={{ fontWeight: "bold", fontSize: { xs: "3rem" } }}
+      >
+        Tic Tac Toe
+      </Typography>
+      <Typography sx={{ fontSize: { fontWeight: "bold", xs: "1.3rem" } }}>
+        {playerMessage}
+      </Typography>
       <div className="board">
         <div className="choiceContainer">
           {/* // set like game goard..but with the Marker selection */}
@@ -209,6 +209,8 @@ const App = () => {
       >
         Reset
       </Button>
+
+      <Footer />
     </div>
   );
 };
