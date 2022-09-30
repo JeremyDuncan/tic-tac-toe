@@ -59,7 +59,7 @@ const App = () => {
       setPlayerOneMarker(marker[index]);
       setPlayerOneTurn(false);
       setPlayerMessage("Player 2, Select your Marker");
-    } else {
+    } else if (!playerOneTurn && playerOneMarker !== marker[index]) {
       setPlayerTwoMarker(marker[index]);
       setPlayerOneTurn(true);
       // after player 2 selects marker...
