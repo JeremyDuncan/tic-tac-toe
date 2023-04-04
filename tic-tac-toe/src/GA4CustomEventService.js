@@ -1,10 +1,10 @@
-export function process_ga4_event(api_secret, measurement_id, client_id, user_id, event_name, timestamp_micros, non_personalized_ads = false) {
+export function process_ga4_event(api_secret, measurement_id, client_id, user_id, event_name, timestamp_micros) {
   const url = `https://www.google-analytics.com/mp/collect?api_secret=${api_secret}&measurement_id=${measurement_id}`;
   const data = {
     client_id: client_id,
     user_id: user_id,
     timestamp_micros: timestamp_micros,
-    non_personalized_ads: non_personalized_ads,
+    non_personalized_ads: false,
     events: [
       {
         name: event_name,
@@ -19,7 +19,8 @@ export function process_ga4_event(api_secret, measurement_id, client_id, user_id
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
+    mode: 'no-cors'
   };
 
   return fetch(url, options);
@@ -55,5 +56,5 @@ export function send_ga4_event() {
                     user_id,
                     event_name,
                     ga4_time_stamp,
-                    non_personalized_ads = false);
+                    );
 }
