@@ -4,6 +4,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import { send_ga4_event } from './GA4CustomEventService.js';
+import { process_ga4_event } from './GA4CustomEventService.js';
 
 import React, { useState } from "react";
 import "./App.css";
@@ -50,6 +52,13 @@ const App = () => {
     setPlayerOneMarker("");
     setPlayerTwoMarker("");
     setMarker(["😎", "🥸", "🤯", "😱", "😈", "💩", "👻", "🎃", "👽"]);
+
+  // ADD CODE HERE
+  console.log("================================================================")
+  console.log("BUTTON PRESSED")
+  send_ga4_event()
+  console.log("================================================================")
+
   };
 
   // Marker Select Logic
