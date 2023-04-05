@@ -4,11 +4,9 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import { send_ga4_event } from './GA4CustomEventService.js';
-import { process_ga4_event } from './GA4CustomEventService.js';
-
 import React, { useState } from "react";
 import "./App.css";
+import { send_ga4_event } from './GA4CustomEventService.js';
 import Choices from "./components/Choices";
 import Footer from "./components/Footer";
 import Square from "./components/Square";
@@ -53,7 +51,9 @@ const App = () => {
     setPlayerTwoMarker("");
     setMarker(["😎", "🥸", "🤯", "😱", "😈", "💩", "👻", "🎃", "👽"]);
 
-  // ADD CODE HERE
+  // ===========================================================================  
+  // Google Analytics Test Code
+  // ---------------------------------------------------------------------------
   console.log("================================================================")
   console.log("BUTTON PRESSED")
   send_ga4_event()
