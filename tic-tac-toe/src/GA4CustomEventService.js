@@ -61,8 +61,9 @@ export function send_ga4_event() {
   // ==============
   // Timing Section
   // --------------
-  const email_time_stamp = Math.floor(Date.now() / 1000);
-  const ga4_time_stamp = Math.floor(email_time_stamp * 1_000_000);
+  const marked_time = Date.now()
+  const email_time_stamp = Math.floor(marked_time / 1000);
+  const ga4_time_stamp = marked_time * 1000;
   const event_name = `CT_F_GA4_CUSTOM_EVENT_TEST_${email_time_stamp}`;
   console.log("email_time_stamp => ", email_time_stamp)
   console.log("ga4_time_stamp => ", ga4_time_stamp)
